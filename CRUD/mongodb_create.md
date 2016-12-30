@@ -33,9 +33,9 @@ ex：
     
 ## writeConcern ##
 
-writeConcern: {w:0,wtimeout:5000}
+`writeConcern: {w:0,wtimeout:5000}`
 
-- w：writeConcern的類型
+- `w`：writeConcern的類型
 
     發出請求 -> 網路傳送 -> 寫入journal log(不同DB作shard同步用) -> 寫入複製組
 
@@ -57,12 +57,12 @@ writeConcern: {w:0,wtimeout:5000}
         
     設置writeConcern愈謹慎，insert的時間就會愈久，速度就會愈慢
     
-- wtimeout：等待回報的最大毫秒數，超過就會回報timeout錯誤。5000毫秒是預設值
+- `wtimeout`：等待回報的最大毫秒數，超過就會回報timeout錯誤。5000毫秒是預設值
 
 ## Ordered ##
 
-ordered：是否強制照順序新增資料(**當資料為陣列時**)
+`ordered`：是否強制照順序新增資料(**當資料為陣列時**)
 
-- True：遇到錯誤資料**立即停止，而且不新增之後的資料(default)**
-- False：跳過錯誤的資料，而且不照順序新增
+- `True`：遇到錯誤資料**立即停止，而且不新增之後的資料(default)**
+- `False`：跳過錯誤的資料，而且不照順序新增
     

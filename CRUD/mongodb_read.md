@@ -7,8 +7,8 @@
       < 呈現方式設定JSON >
     )
     
-- < 條件式JSON >：篩選資料的條件
-- < 呈現方式設定JSON >：設定回傳或是不回傳的欄位
+- `< 條件式JSON >`：篩選資料的條件
+- `< 呈現方式設定JSON >`：設定回傳或是不回傳的欄位
 
 ## 常用條件式 ##
 
@@ -52,27 +52,27 @@ data：
 
 ## 呈現方式設定 ##
 
-- {item:1,qty:1}
+- `{item:1,qty:1}`
 
     只顯示item，qty以及_id欄位(**_id為預設顯示**)
 
-- {'name.first':0,birth:0'}
+- `{'name.first':0,birth:0'}`
 
     指定不顯示那些欄位
 
-- {name:1,contribs:1,_id:0}
+- `{name:1,contribs:1,_id:0}`
 
     限定欄位且強制關閉_id欄位
     
 ## 進階呈現設定 ##
 
-- db.collection.find().sort({amount:-1})
+- `db.collection.find().sort({amount:-1})`
 
     - 依照amount排序
     - -1：遞減
     - 1：遞增
 
-- db.collection.find().skip(100).limit(50)
+- `db.collection.find().skip(100).limit(50)`
 
     - 略過前100筆後列出50筆
     - 分頁式查詢，避免OutOfMemory，記憶體不夠的現象
