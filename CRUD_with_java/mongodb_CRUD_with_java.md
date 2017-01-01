@@ -63,7 +63,7 @@ MongoClient mongoClient = new MongoClient(new ServerAddress("host1", 27017),
 
 [Authentication官網](http://mongodb.github.io/mongo-java-driver/3.4/driver/tutorials/authentication/)
 
-### 切換 資料庫/collection ###
+## 切換 資料庫/collection ##
 
 - 切換資料庫
 
@@ -81,7 +81,7 @@ DBCollection coll = db.getCollection("testCollection");
 
 ```
 
-### 關閉連線 ###
+## 關閉連線 ##
 
 - Mongo DB有最大連線數限制
 
@@ -96,6 +96,100 @@ MongoClient mongoClient = new MongoClient("localhost", 27017);
 mongoClient.close();
 
 ```
+
+## 新增 ##
+
+- 建立`BasicDBObject`
+    - JSON字串建立法
+
+        - 當JSON已經建立時快速方便
+        
+    - 物件建立法
+
+        - 由物件組成，擴展性佳
+
+```
+
+{
+  "name":"MongoDB",
+  "type":"database",
+  "count":1,
+  "info":{
+        x:203,
+        y:102
+       }
+}
+
+```
+
+### JSON字串建立法 ###
+
+```
+
+String json = 
+"{
+  "name":"MongoDB",
+  "type":"database",
+  "count":1,
+  "info":{
+        x:203,
+        y:102
+       }
+}"
+
+BasicDBObject obj = (BasicDBObject)
+JSON.parse(json);
+
+```
+
+### 物件建立法 ###
+
+```
+
+{
+  "name":"MongoDB",
+  "type":"database",
+  "count":1,
+  "info":{
+        x:203,
+        y:102
+       }
+}
+
+```
+
+->
+
+```
+
+BasicDBObject doc = new BasicDBObject();
+doc.put("name","MongoDB");
+doc.put("type","database");
+doc.put("count",1);
+
+BasicDBObject info = new BasicDBObject();
+info.put("x",203);
+info.put("y",102);
+doc.put("info",info);
+
+```
+
+### 新增至collection ###
+
+- 確認DBCollection物件已經建立
+- 使用insert新增物件
+
+    - 相當於指令介面的`db.collection.insert()`
+    - 支援`List<DBObject>`一次新增多筆資料
+
+
+
+
+
+
+
+
+
 
 ---
 
