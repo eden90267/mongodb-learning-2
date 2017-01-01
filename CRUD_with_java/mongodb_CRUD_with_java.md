@@ -100,6 +100,7 @@ mongoClient.close();
 ## 新增 ##
 
 - 建立`BasicDBObject`
+
     - JSON字串建立法
 
         - 當JSON已經建立時快速方便
@@ -182,8 +183,53 @@ doc.put("info",info);
     - 相當於指令介面的`db.collection.insert()`
     - 支援`List<DBObject>`一次新增多筆資料
 
+## 查詢 ##
 
+- 建立查詢`BasicDBObject`
 
+    - 物件建立法
+
+### 物件建立法 ###
+
+```
+
+db.things.find(
+  {
+    type: "database",
+    count: {$gt:1}
+  }
+);
+
+```
+
+->
+
+```
+
+BasicDBObject query =
+     new BasicDBObject("type", "database")
+     .append("count", new BasicDBObject("$gt",1));
+
+```
+
+### 對collection查詢 ###
+
+- 存放至`DBCursor`物件中
+- 使用`hasnext`確認是否有下一筆資料
+- 讀取完畢，關閉`DBCursor`
+
+```
+
+DBCursor cursor = coll.find(query);
+try {
+  while(cursor.hasNext()) {
+    System.out.println(cursor.next());
+  }
+} finally {
+  cursor.close();
+}
+
+```
 
 
 
