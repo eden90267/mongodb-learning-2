@@ -40,6 +40,29 @@ MongoClient mongoClient = new MongoClient(new ServerAddress("localhost", 27017),
 
 ```
 
+P.S. Mongo DB 3.0後，需換成 `createCredential` 的靜態方法創建 `MongoCredential` 。以下截自官網：
+
+Starting in MongoDB 3.0, MongoDB changed the default authentication mechanism from MONGODB-CR to SCRAM-SHA-1.
+
+To create a credential that will authenticate using the default authentication mechanism regardless of server version, create a credential using the `createCredential` static factory method:
+
+
+```
+
+String user; // the user name
+String database; // the name of the database in which the user is defined
+char[] password; // the password as a character array
+// ...
+MongoCredential credential = MongoCredential.createCredential(user, database, password);
+MongoClient mongoClient = new MongoClient(new ServerAddress("host1", 27017),
+                                         Arrays.asList(credential));
+
+```
+
+參考資料：
+
+[Authentication官網](http://mongodb.github.io/mongo-java-driver/3.4/driver/tutorials/authentication/)
+
 ### 切換 資料庫/collection ###
 
 - 切換資料庫
