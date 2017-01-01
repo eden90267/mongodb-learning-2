@@ -231,11 +231,98 @@ try {
 
 ```
 
+## 修改 ##
 
+- 建立BasicDBObject
 
+    - 物件建立法
 
+### 物件建立法 ###
 
+```
 
+db.test.update(
+  {
+    count:1
+  },
+  {
+    $set:{
+      "info.x":204
+    }
+  }
+)
+
+```
+
+->
+
+```
+
+BasicDBObject query = new BasicDBObject();
+query.put("count", 1);
+
+```
+
+```
+
+BasicDBObject update = new BasicDBObject();
+update.put("$set",
+    new BasicDBObject("info.x",204));
+
+```
+
+### 修改至Collection ###
+
+- 一次只修改一筆
+
+    - Multi：False
+    - `Coll.update(query,update)`
+
+- 一次修改多筆
+
+    - Multi：True
+    - `Coll.updateMulti(query,update)`
+
+### 修改特定一筆資料 ###
+
+- `BasicDBObject obj = coll.findOne(query);`
+
+    - 取得符合條件的特定一筆資料
+
+- `obj.put("type","save_test");`
+
+    - 設定要更新的值
+
+- `coll.save(obj);`
+
+    - 直接存回更新後的物件
+    - 修改其中`type`欄位的方式，非整個取代
+
+## 刪除 ##
+
+### 刪除特定條件內容 ###
+
+- `collection.remove(new BasicDBObject().append("count",3));`
+
+    - 刪除所有`count:3`的內容
+
+- `collection.remove(new BasicDBObject());`
+
+    - 刪除條件為空值 -> 刪除所有內容但保留collection
+
+- `collection.drop();`
+
+    - 直接刪除整個collection
+
+### 取得受影響資料筆數 ###
+
+- `WriteResult result = collection.remove(query);`
+
+    - 使用`WriteResult`物件接收刪除完的結果
+
+- `result.getN()`
+
+    - 取出其中的N, 確定受影響的筆數
 
 ---
 
