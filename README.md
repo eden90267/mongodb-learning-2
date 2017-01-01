@@ -4,6 +4,6 @@
 
 1. [MongoDB CRUD指令](https://github.com/eden90267/mongodb-learning-2/tree/master/CRUD)
 2. [MongoDB CRUD實戰及備份與還原](https://github.com/eden90267/mongodb-learning-2/tree/master/CRUD_action_and_backup_and_restore)
-3. 與程式整合：Java libary之MongoDB CRUD
+3. [與程式整合：Java libary之MongoDB CRUD](https://github.com/eden90267/mongodb-learning-2/tree/master/CRUD_with_java)
 
 ## 結語 ##
