@@ -30,6 +30,6 @@
 
 - `mongorestore --collection [collection 名稱] --db [資料庫名稱] -u test -p password [BSON檔案]`
 - 用於還原由`mongodump`產生的BSON檔案
-- 兩個檔案都需要(`.bson & .metadaa.json`)
+- 兩個檔案都需要(`.bson & .metadata.json`)
 
 ### 使用MongoVUE(匯入MySQL) ###
